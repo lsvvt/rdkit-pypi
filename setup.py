@@ -152,7 +152,7 @@ class BuildRDKit(build_ext_orig):
         # Start build process
         os.chdir(str("rdkit"))
 
-        if rdkit_tag = "Release_2024_03_3"
+        if rdkit_tag == "Release_2024_03_3"
             # https://github.com/rdkit/rdkit/pull/7308/commits/bc3cc44dbf38621440c32f34689cdd68974e3a7d
             check_call(["git", "config", "--global", "user.email", '"you@example.com"'])
             check_call(["git", "config", "--global", "user.name", '"Your Name"'])
