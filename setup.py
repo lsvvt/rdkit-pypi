@@ -12,7 +12,8 @@ from setuptools import Extension, find_packages, setup
 from setuptools.command.build_ext import build_ext as build_ext_orig
 
 # RDKit version to build (tag from github repository)
-rdkit_tag = "Release_2024_03_1"
+rdkit_tag = "Release_2024_03_3"
+
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
@@ -147,6 +148,23 @@ class BuildRDKit(build_ext_orig):
 
         # Start build process
         os.chdir(str("rdkit"))
+
+        if rdkit_tag == "Release_2024_03_3"
+            # https://github.com/rdkit/rdkit/pull/7308/commits/bc3cc44dbf38621440c32f34689cdd68974e3a7d
+            check_call(["git", "config", "--global", "user.email", '"you@example.com"'])
+            check_call(["git", "config", "--global", "user.name", '"Your Name"'])
+
+            check_call(["git", "fetch", "origin", "pull/7308/head:tag_release"])
+            check_call(
+                [
+                    "git",
+                    "cherry-pick",
+                    "--strategy=recursive",
+                    "-X",
+                    "theirs",
+                    "bc3cc44dbf38621440c32f34689cdd68974e3a7d",
+                ]
+            )
 
         # Define CMake options
         options = [
