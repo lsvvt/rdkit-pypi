@@ -12,7 +12,7 @@ from setuptools import Extension, find_packages, setup
 from setuptools.command.build_ext import build_ext as build_ext_orig
 
 # RDKit version to build (tag from github repository)
-rdkit_tag = "Release_2024_03_3"
+rdkit_tag = "033_f"
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
@@ -139,7 +139,7 @@ class BuildRDKit(build_ext_orig):
 
         # Clone RDKit from git at rdkit_tag
         check_call(
-            ["git", "clone", "-b", f"{ext.rdkit_tag}", "https://github.com/rdkit/rdkit"]
+            ["git", "clone", "-b", f"{ext.rdkit_tag}", "https://github.com/lsvvt/rdkit"]
         )
 
         # Location of license file
@@ -404,7 +404,7 @@ setup(
     url="https://github.com/kuelumbus/rdkit-pypi",
     project_urls={
         "RDKit": "http://rdkit.org/",
-        "RDKit on Github": "https://github.com/rdkit/rdkit",
+        "RDKit on Github": "https://github.com/lsvvt/rdkit",
     },
     license="BSD-3-Clause",
     long_description=long_description,
